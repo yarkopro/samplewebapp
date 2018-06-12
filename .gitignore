@@ -1,4 +1,5 @@
 /.mvn
+/api/target
 
 # Compiled class file
 *.class
