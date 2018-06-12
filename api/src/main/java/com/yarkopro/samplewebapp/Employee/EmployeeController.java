@@ -3,21 +3,34 @@ package com.yarkopro.samplewebapp.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
     @GetMapping
-    Page<Employee> getEmployeesPage(Pageable pageable) {
+    Page<Employee> getForPage(Pageable pageable) {
         return employeeService.getAllForPage(pageable);
     }
+
+    @GetMapping("/search")
+    List<Employee> searchByName(@RequestParam("name") String name) {
+        return employeeService.search(name);
+    }
+
     @PatchMapping
-    Employee updateEmployee(Employee employee) {
+    Employee update(Employee employee) {
         return employeeService.update(employee);
     }
+
+    @DeleteMapping
+    void delete(Employee employee) {
+        employeeService.delete(employee);
+    }
+
 }

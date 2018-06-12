@@ -2,7 +2,6 @@ package com.yarkopro.samplewebapp.Employee;
 
 import com.yarkopro.samplewebapp.Department.Department;
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data

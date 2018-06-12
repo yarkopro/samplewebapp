@@ -7,4 +7,6 @@ import java.util.List;
 interface EmployeeService {
     Page<Employee> getAllForPage(Pageable pageable);
     Employee update(Employee employee);
+    List<Employee> search(String name);
+    void delete(Employee employee);
 }

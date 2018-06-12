@@ -5,8 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class EmployeeServiceImpl implements EmployeeService {\
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -19,5 +21,15 @@ public class EmployeeServiceImpl implements EmployeeService {\
     @Override
     public Employee update(Employee employee) {
         return employeeRepository.save(employee);
+    }
+
+    @Override
+    public List<Employee> search(String name) {
+        return employeeRepository.findByName(name);
+    }
+
+    @Override
+    public void delete(Employee employee) {
+        employeeRepository.delete(employee);
     }
 }
