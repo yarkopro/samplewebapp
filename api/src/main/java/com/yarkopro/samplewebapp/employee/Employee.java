@@ -1,6 +1,6 @@
-package com.yarkopro.samplewebapp.Employee;
+package com.yarkopro.samplewebapp.employee;
 
-import com.yarkopro.samplewebapp.Department.Department;
+import com.yarkopro.samplewebapp.department.Department;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tblEmployees")
 public class Employee {
+    @Id
     @Column(name = "empID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
@@ -15,7 +16,7 @@ public class Employee {
     String name;
     @Column(name = "empActive")
     boolean isActive;
-    @Column(name = "emp_dpID")
+    @JoinColumn(name = "emp_dpID")
+    @ManyToOne(fetch = FetchType.EAGER)
     Department department;
-
 }

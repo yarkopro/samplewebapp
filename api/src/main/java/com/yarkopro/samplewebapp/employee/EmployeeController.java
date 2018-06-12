@@ -1,4 +1,4 @@
-package com.yarkopro.samplewebapp.Employee;
+package com.yarkopro.samplewebapp.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

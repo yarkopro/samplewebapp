@@ -1,4 +1,4 @@
-package com.yarkopro.samplewebapp.Employee;
+package com.yarkopro.samplewebapp.employee;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
