@@ -1,0 +1,13 @@
+CREATE TABLE tblDepartments (
+  dpID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  dpName VARCHAR(255)
+);
+
+CREATE TABLE tblEmployees (
+  empID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  empName VARCHAR(255),
+  empActive TINYINT,
+  emp_dpID INT,
+  FOREIGN KEY (emp_dpID) REFERENCES tblDepartments (dpID)
+);
+
