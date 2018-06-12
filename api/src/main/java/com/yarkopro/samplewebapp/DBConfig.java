@@ -1,18 +1,22 @@
 package com.yarkopro.samplewebapp;
 
-import org.flywaydb.core.Flyway;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import java.util.Properties;
+
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = {"com.yarkopro.samplewebapp"})
+@EnableJpaRepositories("com.yarkopro.samplewebapp.*")
+@EntityScan("com.yarkopro.samplewebapp.*")
+@ComponentScan("com.yarkopro.samplewebapp.*")
 public class DBConfig {
 
     public static final String MYSQL_USER = "MYSQL_USER";
@@ -31,18 +35,12 @@ public class DBConfig {
         return ds;
     }
 
-    @Bean(name = "flyway")
-    public Flyway flyway() {
-        return new Flyway();
-    }
-
     @Bean
     @DependsOn("flyway")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource());
-        entityManagerFactory.setPersistenceUnitName("kiosk");
-        entityManagerFactory.setPackagesToScan("com.lv.incamp.model");
+        entityManagerFactory.setPackagesToScan("com.yarkopro.samplewebapp.*");
         entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 
         Properties props = new Properties();
