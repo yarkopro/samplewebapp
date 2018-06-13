@@ -10,6 +10,6 @@ export class DepartmentsService {
   }
 
   getDepartments(): Observable<Department[]> {
-    return this.http.get<Department[]>('api/departments/');
+    return this.http.get<Department[]>('api/department/');
   }
 }

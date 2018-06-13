@@ -1,0 +1,14 @@
+<form ngForm="editForm" *ngIf="employee">
+  <div>empName:</div>
+  <input name="empName" [(ngModel)]="employee.name" type="text"/>
+  <div>empActive:</div>
+  <input name="empActive" [(ngModel)]="employee.active" type="checkbox"/>
+  <div>empDepartment:</div>
+  <select name="departments" #departmentsSelect (change)="updateDepartment(departmentsSelect.value)" *ngIf="departments" [(ngModel)]="employee.department">
+    <option *ngFor="let department of departments">
+      {{department.name}}
+    </option>
+  </select>
+  <button name="savebutton" (click)="save()">Save</button>
+  <button name="cancelbutton" (click)="cancel()">Cancel</button>
+</form>

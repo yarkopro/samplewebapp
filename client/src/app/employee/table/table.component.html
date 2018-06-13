@@ -1,3 +1,5 @@
-<p>
-  table works!
-</p>
+<table *ngIf="employeePage">
+  <app-table-row [employee]="employee" *ngFor="let employee of employeePage.content | paginate: { itemsPerPage: 4, currentPage: pageNumber, totalItems: employeePage.totalElements }"></app-table-row>
+</table>
+
+<pagination-controls (pageChange)="pageNumber = $event; pageChange($event)"></pagination-controls>

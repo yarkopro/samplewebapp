@@ -12,10 +12,8 @@ export class AppComponent {
 
   employees: Employee[];
 
-  employeePage: any;
 
-  constructor (private employeeService: EmployeeService,
-               private departmentService: DepartmentsService) {
+  constructor () {
     // this.employeeService.getEmployeePage()
   }
 }

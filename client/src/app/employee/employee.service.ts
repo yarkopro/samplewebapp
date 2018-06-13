@@ -13,12 +13,17 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`${this.BASE_URL}/search?name=${name}`)
   }
 
+  getById(id): Observable<Employee> {
+    return this.http.get<Employee>(this.BASE_URL+"/"+id)
+  }
+
   getEmployeePage(pageNumber, pageSize): Observable<any> {
     return this.http.get<any>(`${this.BASE_URL}?page=${pageNumber}&size=${pageSize}`)
   }
 
-  updateEmployee(employee: Employee): Observable<any> {
-    return this.http.patch(this.BASE_URL, employee, {responseType: "text"})
+  updateEmployee(employee: Employee)/*: Observable<Employee>*/ {
+    console.log(employee);
+    this.http.patch<Employee>(this.BASE_URL, employee).toPromise()
   }
 
   deleteEmployee(employeeId: number): Observable<any> {

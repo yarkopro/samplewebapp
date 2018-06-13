@@ -1,0 +1,13 @@
+tr {
+  display: block;
+}
+
+td {
+  width: 70px;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
