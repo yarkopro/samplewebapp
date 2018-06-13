@@ -1,0 +1,10 @@
+<p>
+  <input [(ngModel)]="name" type="text" />
+  <button (click)="search()">Search</button>
+</p>
+Results:
+<p>
+  <div *ngFor="let employee of employees">
+    {{employee.name}}
+  </div>
+</p>
