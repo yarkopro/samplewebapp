@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -20,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee update(Employee employee) {
+        System.out.println(employee);
         return employeeRepository.save(employee);
     }
 
@@ -29,7 +31,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(Employee employee) {
-        employeeRepository.delete(employee);
+    public Optional<Employee> getById(Integer id) {
+        return employeeRepository.findById(id);
+    }
+
+    @Override
+    public boolean delete(int employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        if (employee.isPresent()){
+            employeeRepository.delete(employee.get());
+            return true;
+        } else return false;
     }
 }

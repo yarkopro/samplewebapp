@@ -17,6 +17,6 @@ public class Employee {
     @Column(name = "empActive")
     boolean isActive;
     @JoinColumn(name = "emp_dpID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     Department department;
 }
